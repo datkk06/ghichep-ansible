@@ -60,6 +60,8 @@ Server (Ubuntu 14.04) (10.10.10.10) ----|
                                         |------Client2 (Ubuntu 14.04) - Database server (10.10.10.30)
 ```
 
+##Bài lab được thực hiện dưới quyền ROOT
+
 - Trước tiên tại server chúng ta tiến hành Cài đặt Ansible để remote :
 
 ```sh
@@ -72,6 +74,18 @@ sudo apt-get install -y ansible
 
 ```sh
 ssh-keygen -t rsa -b 4096
+```
+
+- Tại client chúng ta cấu hình cho ssh được phép truy cập dưới quyền root:
+
+```sh
+vi /etc/ssh/sshd_config
+```
+
+- Sau đó tìm đến `PermitRootLogin` sửa lại như sau :
+
+```sh
+PermitRootLogin yes
 ```
 
 - Sao chép key sang các client :
